@@ -214,10 +214,10 @@ class Explanation(object):
 
         """
         file_ = open(file_path, 'w', encoding='utf8')
-        file_.write(self.as_html(labels=labels,
-                                 predict_proba=predict_proba,
-                                 show_predicted_value=show_predicted_value,
-                                 **kwargs))
+        file_.write(labels=labels,
+                    predict_proba=predict_proba,
+                    show_predicted_value=show_predicted_value,
+                    **kwargs))
         file_.close()
 
     def as_html(self,

@@ -213,10 +213,10 @@ class Explanation(object):
 
         """
         file_ = open(file_path, 'w', encoding='utf8')
-        #file_.write(labels)
+        file_.write(self.class_names)
         #file_.write(predict_proba)
         #file_.write(show_predicted_value)
-        file_.write("In file ...")           
+        #file_.write("In file ...")           
         file_.close()
 
     def as_html(self,

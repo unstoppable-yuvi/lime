@@ -166,7 +166,7 @@ class Explanation(object):
             pyplot figure (barchart).
         """
         import matplotlib.pyplot as plt
-	file_ = 'C:/Users/a.i.mevawala/Desktop/Hackathon/Explanation/stroke2.txt'
+	file_ = 'C:\Users\a.i.mevawala\Desktop\Hackathon\Explanation\stroke2.txt'
 	exp = self.as_list(label=label, **kwargs)
         fig = plt.figure()
         vals = [x[1] for x in exp]

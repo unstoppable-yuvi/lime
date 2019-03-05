@@ -217,7 +217,7 @@ class Explanation(object):
         file_.write(labels=labels,
                     predict_proba=predict_proba,
                     show_predicted_value=show_predicted_value,
-                    **kwargs))
+                    **kwargs)
         file_.close()
 
     def as_html(self,

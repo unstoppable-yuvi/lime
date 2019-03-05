@@ -215,6 +215,10 @@ class Explanation(object):
         file_ = open(file_path, 'w', encoding='utf8')
         for item in self.class_names:
             file_.write("%s\n" % item)
+        for item in self.predict_proba:
+            file_.write("%s\n" % item)
+        for item in self.show_predicted_value:
+            file_.write("%s\n" % item)
         #file_.write(self.class_names)
         #file_.write(predict_proba)
         #file_.write(show_predicted_value)

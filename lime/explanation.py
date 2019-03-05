@@ -203,8 +203,7 @@ class Explanation(object):
                      file_path,
                      labels=None,
                      predict_proba=True,
-                     show_predicted_value=True,
-                     **kwargs):
+                     show_predicted_value=True):
         """Saves html explanation to file. .
 
         Params:

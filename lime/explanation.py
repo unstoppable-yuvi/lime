@@ -213,9 +213,9 @@ class Explanation(object):
 
         """
         file_ = open(file_path, 'w', encoding='utf8')
-        file_.write(labels=labels,
-                    predict_proba=predict_proba,
-                    show_predicted_value=show_predicted_value
+        file_.write(labels,
+                    predict_proba,
+                    show_predicted_value
                    )
         file_.close()
 

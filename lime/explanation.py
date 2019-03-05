@@ -172,6 +172,11 @@ class Explanation(object):
         names = [x[0] for x in exp]
         vals.reverse()
         names.reverse()
+        file_ = "C:/Users/a.i.mevawala/Desktop/Hackathon/Explanation/stroke2.txt"
+		for item in names:
+            file_.write("%s\n" % item)
+		for item in vals:
+            file_.write("%s\n" % item)
         colors = ['green' if x > 0 else 'red' for x in vals]
         pos = np.arange(len(exp)) + .5
         plt.barh(pos, vals, align='center', color=colors)

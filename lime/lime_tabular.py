@@ -390,15 +390,11 @@ class LimeTabularExplainer(object):
         filename_suffix = 'txt'
         #file_='C:\Users\a.i.mevawala\Desktop\Hackathon\Explanation\stroke2.txt'
         os.path.join(dir_name, base_filename + "." + filename_suffix)
-		
-		for item in ret_exp.top_labels:
-            file_.write("%s\n" % item)	
-		
-		file_.write("%s\n" % ret_exp.score)
-		file_.write("%s\n" % ret_exp.local_pred)
-		#ret_exp.local_pred
-
-        return ret_exp
+        for item in ret_exp.top_labels:
+            file_.write("%s\n" % item)
+        file_.write("%s\n" % ret_exp.score)
+        file_.write("%s\n" % ret_exp.local_pred)
+        #ret_exp.local_pred
 
     def __data_inverse(self,
                        data_row,

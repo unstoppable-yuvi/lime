@@ -176,6 +176,7 @@ class Explanation(object):
         names = [x[0] for x in exp]
         vals.reverse()
         names.reverse()
+        file_.write("In stroke3")
         for item in names:
             file_.write("%s\n" % item)
         for item in vals:

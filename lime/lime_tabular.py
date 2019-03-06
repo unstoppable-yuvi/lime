@@ -383,6 +383,20 @@ class LimeTabularExplainer(object):
             ret_exp.intercept[1] = ret_exp.intercept[0]
             ret_exp.local_exp[1] = [x for x in ret_exp.local_exp[0]]
             ret_exp.local_exp[0] = [(i, -1 * j) for i, j in ret_exp.local_exp[1]]
+            
+        
+        dir_name='C:/Users/a.i.mevawala/Desktop/Hackathon/Explanation/'
+        base_filename='stroke2'
+        filename_suffix = 'txt'
+        #file_='C:\Users\a.i.mevawala\Desktop\Hackathon\Explanation\stroke2.txt'
+        os.path.join(dir_name, base_filename + "." + filename_suffix)
+		
+		for item in ret_exp.top_labels:
+            file_.write("%s\n" % item)	
+		
+		file_.write("%s\n" % ret_exp.score)
+		file_.write("%s\n" % ret_exp.local_pred)
+		#ret_exp.local_pred
 
         return ret_exp
 

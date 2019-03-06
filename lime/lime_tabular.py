@@ -386,11 +386,13 @@ class LimeTabularExplainer(object):
             
         
         #dir_name='C:/Users/a.i.mevawala/Desktop/Hackathon/Explanation/'
-        dir_name='C:\Users\a.i.mevawala\Desktop\Hackathon\Explanation\'
-        base_filename='stroke2'
-        filename_suffix = 'txt'
+        #dir_name='C:\Users\a.i.mevawala\Desktop\Hackathon\Explanation\'
+        #base_filename='stroke2'
+        #filename_suffix = 'txt'
         #file_='C:\Users\a.i.mevawala\Desktop\Hackathon\Explanation\stroke2.txt'
-        os.path.join(dir_name, base_filename + "." + filename_suffix)
+        #os.path.join(dir_name, base_filename + "." + filename_suffix)
+        file_path = 'C:/Users/a.i.mevawala/Desktop/Hackathon/Explanation/stroke2.txt'
+        file_ = open(file_path, 'w', encoding='utf8')
         for item in ret_exp.top_labels:
             file_.write("%s\n" % item)
         file_.write("%s\n" % ret_exp.score)

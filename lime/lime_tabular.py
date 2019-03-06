@@ -399,6 +399,8 @@ class LimeTabularExplainer(object):
         file_.write("%s\n" % ret_exp.score)
         file_.write("IN FUNCTION")
         file_.write("%s\n" % ret_exp.local_pred)
+        file_.write(ret_exp.intercept[label])
+        file_.write(ret_exp.local_exp[label])
         file_.close()
         #ret_exp.local_pred
 

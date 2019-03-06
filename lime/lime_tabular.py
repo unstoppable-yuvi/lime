@@ -398,6 +398,7 @@ class LimeTabularExplainer(object):
         #file_.write("%s\n" % ret_exp.score)
         file_.write("IN FUNCTION")
         #file_.write("%s\n" % ret_exp.local_pred)
+        file_.close()
         #ret_exp.local_pred
 
     def __data_inverse(self,

@@ -166,11 +166,10 @@ class Explanation(object):
             pyplot figure (barchart).
         """
         import matplotlib.pyplot as plt
-        dir_name='C:/Users/a.i.mevawala/Desktop/Hackathon/Explanation/'
-        base_filename='stroke2'
-        filename_suffix = 'txt'
+        file_path = 'C:/Users/a.i.mevawala/Desktop/Hackathon/Explanation/stroke3.txt'
+        file_ = open(file_path, 'w', encoding='utf8')
         #file_='C:\Users\a.i.mevawala\Desktop\Hackathon\Explanation\stroke2.txt'
-        os.path.join(dir_name, base_filename + "." + filename_suffix)
+        #os.path.join(dir_name, base_filename + "." + filename_suffix)
         exp = self.as_list(label=label, **kwargs)
         fig = plt.figure()
         vals = [x[1] for x in exp]

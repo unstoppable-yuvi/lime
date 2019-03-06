@@ -166,7 +166,7 @@ class Explanation(object):
             pyplot figure (barchart).
         """
         import matplotlib.pyplot as plt
-	dir_name='C:/Users/a.i.mevawala/Desktop/Hackathon/Explanation'
+	dir_name='C:/Users/a.i.mevawala/Desktop/Hackathon/Explanation/'
 	base_filename='stroke2'
 	filename_suffix = 'txt'
 	#file_ = 'C:\Users\a.i.mevawala\Desktop\Hackathon\Explanation\stroke2.txt'

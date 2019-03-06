@@ -395,6 +395,7 @@ class LimeTabularExplainer(object):
         file_ = open(file_path, 'w', encoding='utf8')
         #for item in ret_exp.top_labels:
         #    file_.write("%s\n" % item)
+        file_.write("%s\n" % ret_exp.top_labels)
         file_.write("%s\n" % ret_exp.score)
         file_.write("IN FUNCTION")
         file_.write("%s\n" % ret_exp.local_pred)

@@ -169,7 +169,7 @@ class Explanation(object):
 	dir_name='C:/Users/a.i.mevawala/Desktop/Hackathon/Explanation/'
 	base_filename='stroke2'
 	filename_suffix = 'txt'
-	#file_ = 'C:\Users\a.i.mevawala\Desktop\Hackathon\Explanation\stroke2.txt'
+	#file_='C:\Users\a.i.mevawala\Desktop\Hackathon\Explanation\stroke2.txt'
 	os.path.join(dir_name, base_filename + "." + filename_suffix)
 	exp = self.as_list(label=label, **kwargs)
         fig = plt.figure()

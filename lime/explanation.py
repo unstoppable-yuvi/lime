@@ -166,21 +166,21 @@ class Explanation(object):
             pyplot figure (barchart).
         """
         import matplotlib.pyplot as plt
-	dir_name='C:/Users/a.i.mevawala/Desktop/Hackathon/Explanation/'
-	base_filename='stroke2'
-	filename_suffix = 'txt'
-	#file_='C:\Users\a.i.mevawala\Desktop\Hackathon\Explanation\stroke2.txt'
-	os.path.join(dir_name, base_filename + "." + filename_suffix)
-	exp = self.as_list(label=label, **kwargs)
+        dir_name='C:/Users/a.i.mevawala/Desktop/Hackathon/Explanation/'
+        base_filename='stroke2'
+        filename_suffix = 'txt'
+        #file_='C:\Users\a.i.mevawala\Desktop\Hackathon\Explanation\stroke2.txt'
+        os.path.join(dir_name, base_filename + "." + filename_suffix)
+        exp = self.as_list(label=label, **kwargs)
         fig = plt.figure()
         vals = [x[1] for x in exp]
         names = [x[0] for x in exp]
         vals.reverse()
         names.reverse()
         for item in names:
-	    file_.write("%s\n" % item)
-	for item in vals:
-	    file_.write("%s\n" % item)
+            file_.write("%s\n" % item)
+        for item in vals:
+            file_.write("%s\n" % item)
         colors = ['green' if x > 0 else 'red' for x in vals]
         pos = np.arange(len(exp)) + .5
         plt.barh(pos, vals, align='center', color=colors)

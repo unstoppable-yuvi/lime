@@ -383,7 +383,7 @@ class LimeTabularExplainer(object):
 
         # UV code
         print("Mapper")
-        print(TableDomainMapper.map_exp_ids(ret_exp))
+        print(TableDomainMapper.map_exp_ids(self,ret_exp))
         
         
         

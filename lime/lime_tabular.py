@@ -382,8 +382,9 @@ class LimeTabularExplainer(object):
                     feature_selection=self.feature_selection)
 
         # UV code
-        for label in labels:
-            print("%s\n",label)
+        print("Mapper")
+        print(self.TableDomainMapper.map_exp_ids(ret_exp))
+        
         
         
         if self.mode == "regression":

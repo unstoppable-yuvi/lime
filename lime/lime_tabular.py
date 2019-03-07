@@ -379,6 +379,11 @@ class LimeTabularExplainer(object):
                     model_regressor=model_regressor,
                     feature_selection=self.feature_selection)
 
+        # UV code
+        for label in labels:
+            print("%s\n",label)
+        
+        
         if self.mode == "regression":
             ret_exp.intercept[1] = ret_exp.intercept[0]
             ret_exp.local_exp[1] = [x for x in ret_exp.local_exp[0]]

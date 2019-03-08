@@ -381,10 +381,7 @@ class LimeTabularExplainer(object):
                     model_regressor=model_regressor,
                     feature_selection=self.feature_selection)
 
-        # UV code
-        print("Mapper")
-        print(TableDomainMapper.map_exp_ids(self,ret_exp))
-        
+     
         
         
         if self.mode == "regression":
@@ -393,23 +390,6 @@ class LimeTabularExplainer(object):
             ret_exp.local_exp[0] = [(i, -1 * j) for i, j in ret_exp.local_exp[1]]
             
         
-        #dir_name='C:/Users/a.i.mevawala/Desktop/Hackathon/Explanation/'
-        #dir_name='C:\Users\a.i.mevawala\Desktop\Hackathon\Explanation\'
-        #base_filename='stroke2'
-        #filename_suffix = 'txt'
-        #file_='C:\Users\a.i.mevawala\Desktop\Hackathon\Explanation\stroke2.txt'
-        #os.path.join(dir_name, base_filename + "." + filename_suffix)
-        file_path = 'C:/Users/a.i.mevawala/Desktop/Hackathon/Explanation/stroke2.txt'
-        file_ = open(file_path, 'w', encoding='utf8')
-        #for item in ret_exp.top_labels:
-        #    file_.write("%s\n" % item)
-        file_.write("%s\n" % ret_exp.top_labels)
-        file_.write("%s\n" % ret_exp.score)
-        file_.write("IN FUNCTION")
-        file_.write("%s\n" % ret_exp.local_pred)
-        file_.write("%s\n" % ret_exp.intercept[label])
-        file_.write("%s\n" % ret_exp.local_exp[label])
-        file_.close()
         #ret_exp.local_pred
 
     def __data_inverse(self,

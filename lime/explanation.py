@@ -8,6 +8,7 @@ import os.path
 import json
 import string
 import numpy as np
+import re
 
 from .exceptions import LimeError
 
@@ -166,21 +167,12 @@ class Explanation(object):
             pyplot figure (barchart).
         """
         import matplotlib.pyplot as plt
-        file_path = 'C:/Users/a.i.mevawala/Desktop/Hackathon/Explanation/stroke3.txt'
-        file_ = open(file_path, 'w', encoding='utf8')
-        #file_='C:\Users\a.i.mevawala\Desktop\Hackathon\Explanation\stroke2.txt'
-        #os.path.join(dir_name, base_filename + "." + filename_suffix)
         exp = self.as_list(label=label, **kwargs)
         fig = plt.figure()
         vals = [x[1] for x in exp]
         names = [x[0] for x in exp]
         vals.reverse()
         names.reverse()
-        file_.write("In stroke3")
-        for item in names:
-            file_.write("%s\n" % item)
-        for item in vals:
-            file_.write("%s\n" % item)
         colors = ['green' if x > 0 else 'red' for x in vals]
         pos = np.arange(len(exp)) + .5
         plt.barh(pos, vals, align='center', color=colors)
@@ -203,16 +195,23 @@ class Explanation(object):
         This will throw an error if you don't have IPython installed"""
 
         from IPython.core.display import display, HTML
-        display(HTML(self.as_html(labels=labels,
+        html_in,label_in,explanation_in=self.as_html(labels=labels,
                                   predict_proba=predict_proba,
                                   show_predicted_value=show_predicted_value,
-                                  **kwargs)))
+                                  **kwargs)
+        class_name = label_in
+        
+        
+     
+        display(HTML(html_in))
+        
 
     def save_to_file(self,
                      file_path,
                      labels=None,
                      predict_proba=True,
-                     show_predicted_value=True):
+                     show_predicted_value=True,
+                     **kwargs):
         """Saves html explanation to file. .
 
         Params:
@@ -222,14 +221,10 @@ class Explanation(object):
 
         """
         file_ = open(file_path, 'w', encoding='utf8')
-        for item in self.class_names:
-            file_.write("%s\n" % item)
-        for item in self.predict_proba:
-            file_.write("%s\n" % item)
-        #file_.write(self.class_names)
-        #file_.write(predict_proba)
-        #file_.write(show_predicted_value)
-        #file_.write("In file ...")           
+        file_.write(self.as_html(labels=labels,
+                                 predict_proba=predict_proba,
+                                 show_predicted_value=show_predicted_value,
+                                 **kwargs))
         file_.close()
 
     def as_html(self,
@@ -254,6 +249,8 @@ class Explanation(object):
             code for an html page, including javascript includes.
         """
 
+        import re
+        #explanation_out = []
         def jsonize(x):
             return json.dumps(x, ensure_ascii=False)
 
@@ -302,23 +299,35 @@ class Explanation(object):
         if self.mode == "classification":
             for label in labels:
                 exp = jsonize(self.as_list(label))
+                explanation_out = re.findall(r'"(.*?)(?<!\\)"',exp)
+                label_out = label
                 exp_js += u'''
                 exp_div = top_div.append('div').classed('lime explanation', true);
                 exp.show(%s, %d, exp_div);
                 ''' % (exp, label)
         else:
             exp = jsonize(self.as_list())
+            explanation_out = re.findall(r'"(.*?)(?<!\\)"', exp)
+            label_out = self.dummy_label
             exp_js += u'''
             exp_div = top_div.append('div').classed('lime explanation', true);
             exp.show(%s, %s, exp_div);
             ''' % (exp, self.dummy_label)
-
+  
         raw_js = '''var raw_div = top_div.append('div');'''
+        
+        file_path = 'C:/Users/a.i.mevawala/Desktop/Hackathon/Explanation/stroke3.txt'
+        file_ = open(file_path, 'w', encoding='utf8')
+        file_.write(str(label_out))
+        file_.write(": ")
+        file_.write(str(explanation_out))
 
         if self.mode == "classification":
             html_data = self.local_exp[labels[0]]
         else:
             html_data = self.local_exp[self.dummy_label]
+        
+        file_.close()
 
         raw_js += self.domain_mapper.visualize_instance_html(
                 html_data,
@@ -337,4 +346,4 @@ class Explanation(object):
         ''' % (random_id, predict_proba_js, predict_value_js, exp_js, raw_js)
         out += u'</body></html>'
 
-        return out
+        return [out,label_out,explanation_out]

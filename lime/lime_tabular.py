@@ -50,7 +50,7 @@ class TableDomainMapper(explanation.DomainMapper):
         Returns:
             list of tuples (feature_name, weight)
         """
-        names = self.exp_feature_names
+        #names = self.exp_feature_names
         if self.discretized_feature_names is not None:
             names = self.discretized_feature_names
             name_list=[(names[x[0]], x[1]) for x in exp]
